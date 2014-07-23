@@ -1,11 +1,12 @@
 TARGET_ARCH=powerpc
 TARGET_OS=linux
-LIBC_STYLE=glibc
+#LIBC_STYLE=glibc
+LIBC_STYLE=eglibc
 
-LIBSTDC++_VERSION=6.0.3
-LIBNSL_VERSION=2.3.4
+LIBSTDC++_VERSION=6.0.10
+LIBNSL_VERSION=2.8
 
-GNU_TARGET_NAME = powerpc-linux-gnuspe
+GNU_TARGET_NAME = powerpc-none-linux-gnuspe
 
 ifeq (ppc, $(HOST_MACHINE))
 
@@ -24,7 +25,7 @@ else
 
 HOSTCC = gcc
 GNU_HOST_NAME = $(HOST_MACHINE)-pc-linux-gnu
-TARGET_CROSS_TOP = $(BASE_DIR)/toolchain/gcc-3.4.3-glibc-2.3.4
+TARGET_CROSS_TOP = $(BASE_DIR)/toolchain/gcc-4.3.2-glibc-2.3.4
 TARGET_CROSS = $(TARGET_CROSS_TOP)/$(GNU_TARGET_NAME)/bin/$(GNU_TARGET_NAME)-
 TARGET_LIBDIR = $(TARGET_CROSS_TOP)/$(GNU_TARGET_NAME)/lib
 TARGET_USRLIBDIR = $(TARGET_CROSS_TOP)/$(GNU_TARGET_NAME)/lib
@@ -35,8 +36,8 @@ TARGET_CFLAGS=$(TARGET_OPTIMIZATION) $(TARGET_DEBUGGING) $(TARGET_CUSTOM_FLAGS)
 
 NATIVE_GCC_VERSION=3.4.6
 
-TOOLCHAIN_BINARY_SITE=http://download.synology.com/toolchain
-TOOLCHAIN_BINARY=gcc343_glibc234_854x.tar.gz
+TOOLCHAIN_BINARY_SITE=http://downloads.sourceforge.net/project/dsgpl/DSM%205.0%20Tool%20Chains/PowerPC%20QorIQ%20Linux%202.6.32
+TOOLCHAIN_BINARY=gcc4374_eglibc2874_qoriq-GPL.tgz
 
 toolchain: $(TARGET_CROSS_TOP)/.unpacked
 
